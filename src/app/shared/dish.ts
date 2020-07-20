@@ -1,7 +1,7 @@
 import { Comment } from './comment';
 
 export class Dish {
-    id: string;
+    id: Number;
     name: string;
     image: string;
     category: string;
