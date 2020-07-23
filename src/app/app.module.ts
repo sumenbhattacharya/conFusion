@@ -34,6 +34,7 @@ import {LeaderService} from './services/leader.service';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
+import { MatSliderModule } from '@angular/material';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { LoginComponent } from './login/login.component';
     MatListModule,
     MatGridListModule,
     MatCardModule,
+    MatSliderModule,
     AppRoutingModule,
     MatDialogModule,
     MatButtonModule,
