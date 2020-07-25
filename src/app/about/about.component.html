@@ -55,7 +55,7 @@
 
   <h2>Corporate Leadership</h2> 
   <div fxFlex>
-    <mat-list *ngIf="leaders">
+    <mat-list *ngIf="leaders" [@expand]>
       <mat-list-item *ngFor="let leader of leaders"> 
        <img mat-list-avatar src="{{BaseURL + leader.image}}">
        <h4 matLine>{{leader.name}} {{leader.abbr}}</h4>
