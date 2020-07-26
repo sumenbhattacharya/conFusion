@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Params, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import {FeedbackService} from '../services/feedback.service';
 import { Feedback, ContactType } from '../shared/feedback';
-import { visibility, flyInOut, expand } from '../animations/app.animation';
-import { switchMap } from 'rxjs/operators';
+import {  flyInOut } from '../animations/app.animation';
+
 
 @Component({
   selector: 'app-contact',
@@ -66,9 +66,9 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.pipe(switchMap((params: Params) => { this.visibility='hidden'; return this.feedbackserive.submitFeedback(params['firstname: ']); }))
-    .subscribe(feedback => { this.feedback = feedback; this.feedbackcopy = feedback;this.visibility = 'shown';},
-     errmess => this.errMess = <any>errmess);
+    // this.route.params.pipe(switchMap((params: Params) => { this.visibility='hidden'; return this.feedbackserive.submitFeedback(params['firstname: ']); }))
+    // .subscribe(feedback => { this.feedback = feedback; this.feedbackcopy = feedback;this.visibility = 'shown';},
+    //  errmess => this.errMess = <any>errmess);
 
    ///this.feedback.(this.feedback); 
 
