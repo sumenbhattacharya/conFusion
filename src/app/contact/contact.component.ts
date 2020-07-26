@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Params, ActivatedRoute } from '@angular/router';
+import {FeedbackService} from '../services/feedback.service';
 import { Feedback, ContactType } from '../shared/feedback';
-import { flyInOut } from '../animations/app.animation';
+import { visibility, flyInOut, expand } from '../animations/app.animation';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contact',
@@ -22,6 +24,9 @@ export class ContactComponent implements OnInit {
   
   feedbackForm: FormGroup;
   feedback: Feedback;
+  errMess: string;
+  feedbackcopy: Feedback;
+  visibility = 'shown';
   contactType = ContactType;
   @ViewChild('fform') feedbackFormDirective;
   
@@ -53,11 +58,21 @@ export class ContactComponent implements OnInit {
     },
   };
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private feedbackserive : FeedbackService,
+    private location:Location) { 
     this.createForm();
   }
 
   ngOnInit() {
+    this.route.params.pipe(switchMap((params: Params) => { this.visibility='hidden'; return this.feedbackserive.submitFeedback(params['firstname: ']); }))
+    .subscribe(feedback => { this.feedback = feedback; this.feedbackcopy = feedback;this.visibility = 'shown';},
+     errmess => this.errMess = <any>errmess);
+
+   ///this.feedback.(this.feedback); 
+
+
   }
 
   createForm() {

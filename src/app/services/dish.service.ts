@@ -5,7 +5,6 @@ import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { baseURL } from '../shared/baseurl';
 import { Observable,of } from 'rxjs';
-import { delay } from 'rxjs/operators';
 import { ProcessHTTPMsgService } from './process-httpmsg.service';
 
 @Injectable({
